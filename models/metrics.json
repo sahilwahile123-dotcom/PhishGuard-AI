@@ -1,0 +1,44 @@
+{
+  "accuracy": 0.9945191511057294,
+  "precision": 0.9963980189104007,
+  "recall": 0.9907476496045367,
+  "f1": 0.9935648009577971,
+  "confusion_matrix": [
+    [
+      26898,
+      72
+    ],
+    [
+      186,
+      19917
+    ]
+  ],
+  "dataset": "data/dataset.csv",
+  "train_size": 188289,
+  "test_size": 47073,
+  "skipped_invalid_urls": 8,
+  "test_class_counts": {
+    "legitimate": 26970,
+    "phishing": 20103
+  },
+  "feature_importances": {
+    "url_length": 0.049675987646673386,
+    "host_length": 0.016729721476085542,
+    "path_length": 0.27783411220927157,
+    "query_length": 0.00019787844988541992,
+    "has_ip": 4.3365071455219747e-07,
+    "is_https": 0.4448743881941834,
+    "num_subdomains": 0.018607571108288208,
+    "num_dots": 0.012311383052730213,
+    "num_hyphens": 0.014924396955136025,
+    "num_digits": 0.07354888166035727,
+    "digit_ratio": 0.06578838833610577,
+    "num_special_chars": 0.000826593753067128,
+    "has_at": 0.0001997006507985945,
+    "is_shortener": 2.94971941264508e-05,
+    "unusual_port": 0.0,
+    "keyword_count": 0.0024536751725766784,
+    "host_entropy": 0.021997390489999893
+  },
+  "trained_at": "2026-10-23T14:15:53+00:00"
+}

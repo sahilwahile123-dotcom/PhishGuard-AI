@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhishGuard AI - Phishing URL Detection</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="nav"><a class="logo" href="#home"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>PhishGuard AI</a>
+<nav><a href="#home">Home</a><a href="#scanner">URL Scanner</a><a href="#how">How It Works</a><a href="#about">About Project</a></nav></header>
+<main>
+<section id="home" class="hero">
+<h1>Detect Phishing Before It Detects You.</h1>
+<p>Paste a link. A machine learning model reads the URL's structure and estimates how likely it is to be phishing, without ever opening the site.</p>
+<form id="scanForm" class="scan-box" novalidate>
+<input id="urlInput" type="text" maxlength="{{ max_len }}" placeholder="https://example.com/login" aria-label="URL to scan" autocomplete="off">
+<button id="scanBtn" type="submit">Scan URL</button><button id="clearBtn" type="button" class="ghost">Clear</button></form>
+<p class="warn"><b>Warning:</b> never open a link you suspect is phishing. This tool only analyses the text of the URL.</p>
+</section>
+<section id="scanner" class="panel">
+<h2>URL Scanner</h2>
+<div id="status" class="status" role="status">Enter a URL above to begin.</div>
+<div id="result" hidden>
+<div class="verdict" id="verdict"></div>
+<p id="confidence" class="muted"></p>
+<h3>Detailed analysis</h3>
+<p class="muted">These are <b>heuristic indicators</b> read from the URL text, not verified facts about the website. HTTPS alone does not make a site safe.</p>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th>Value</th><th>Reading</th></tr></thead><tbody id="featRows"></tbody></table></div>
+</div></section>
+<section class="panel"><h2>Visual analytics</h2>
+<div class="charts"><div><h3>This URL's counts</h3><canvas id="featChart"></canvas></div>
+<div><h3>Model feature importance</h3><canvas id="impChart"></canvas></div>
+<div><h3>Held-out test set: class counts</h3><canvas id="distChart"></canvas></div>
+<div><h3>Model performance</h3><canvas id="metChart"></canvas></div></div>
+<p id="modelNote" class="muted"></p></section>
+<section id="how" class="panel"><h2>How it works</h2>
+<ol class="steps"><li>You enter a URL.</li><li>The system extracts lexical features (length, dots, hyphens, IP host, port, keywords...).</li><li>A Random Forest model analyses those features.</li><li>The probability becomes a class: Legitimate, Suspicious or Phishing.</li><li>The page shows the result with the indicators behind it.</li></ol></section>
+<section id="about" class="panel"><h2>About the project</h2>
+<p><b>Phishing</b> tricks people into entering passwords or payment details on fake sites. Detecting it early protects accounts and money. Machine learning learns patterns from many labelled URLs, such as odd lengths, raw IP hosts and bait words, and applies them to new links.</p>
+<p><b>Technologies:</b> HTML, CSS, JavaScript, Chart.js, Python, Flask, scikit-learn, pandas, NumPy.</p>
+<p><b>Limitations:</b> only the URL text is analysed, so false positives and false negatives happen. No single indicator proves a site is malicious. Quality depends on the training dataset.</p></section>
+</main>
+<footer><b>AI-Based Phishing Website Detection System</b> | Flask, scikit-learn, Chart.js<br>Educational project only. Not a substitute for professional security tools. &copy; 2026 PhishGuard AI.</footer>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body></html>
